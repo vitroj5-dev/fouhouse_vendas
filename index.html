@@ -188,6 +188,8 @@ button.btn{background:transparent;font-family:Jost,sans-serif;font-size:14px;cur
 @media(prefers-reduced-motion:reduce){.teamview.in .thead>:first-child,.teamview.in .shirt,.teamview.in .empty{animation:none}}
 .bgs div.bf.on{opacity:1}
 .bgs.bfon::after{background:linear-gradient(rgba(10,9,7,0),rgba(10,9,7,.2) 60%,rgba(10,9,7,.55))}
+.pr .was{font-size:13px;color:var(--muted);margin-right:6px}
+.pr .bftag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:#ff3b30;border-radius:999px;padding:1px 8px;margin-left:4px;white-space:nowrap}
 .bfnote{margin:-6px 0 16px;color:var(--muted);font-size:14px}
 .bfbadge{align-self:center;margin-top:8px;padding:2px 10px;border-radius:999px;background:#ff3b30;color:#fff;font:500 11px/1.6 Jost,sans-serif;letter-spacing:.12em;text-transform:uppercase}
 .price .was{font:400 14px Jost,sans-serif;color:var(--muted);margin-right:6px}
@@ -488,7 +490,7 @@ var track=document.getElementById("track"),dotsEl=document.getElementById("dots"
 (function(){
   var h="";
   P.forEach(function(x,ti){(SHIRTS[x[1]]||[]).forEach(function(s){
-    h+='<button class="slide" type="button" data-t="'+ti+'" aria-label="'+x[1]+': '+s[0]+'"><img src="'+s[1]+'" alt="'+s[0]+'" loading="lazy" width="290" height="290"><div class="meta"><div class="club">'+x[1]+'</div><div class="nm">'+s[0]+'</div>'+(s[2]?'<div class="pr">'+money(s[2])+'</div>':'')+'</div></button>';
+    h+='<button class="slide" type="button" data-t="'+ti+'" aria-label="'+x[1]+': '+s[0]+'"><img src="'+s[1]+'" alt="'+s[0]+'" loading="lazy" width="290" height="290"><div class="meta"><div class="club">'+x[1]+'</div><div class="nm">'+s[0]+'</div>'+(s[2]?'<div class="pr">'+(bfPrice(x[1],s[0])<s[2]?'<s class="was">'+money(s[2])+'</s>':'')+money(bfPrice(x[1],s[0]))+' <span class="bftag">Black Friday</span></div>':'')+'</div></button>';
   })});
   if(!h){secCar.hidden=true;secCar.style.display="none";return}
   track.innerHTML=h;slides=[].slice.call(track.children);
